@@ -18,13 +18,21 @@ async function isEmailReal(email) {
   }
 
   const data = await response.json();
-    console.log(`AbstractAPI result for ${email}:`, JSON.stringify(data));
+  console.log(`AbstractAPI result for ${email}:`, JSON.stringify(data));
+ 
+  //abstractapi email check
+  const validFormat =
+    data?.email_deliverability?.is_format_valid ?? data?.is_valid_format?.value;
+  const isDisposable =
+    data?.email_quality?.is_disposable ?? data?.is_disposable_email?.value ?? false;
+  const status = String(
+    data?.email_deliverability?.status ?? data?.deliverability ?? ""
+  ).toUpperCase();
+ 
+  if (validFormat === false || isDisposable === true) return false;
 
-
-
-  // Require all three: well-formed, AbstractAPI marks it deliverable,
-  // and the mailbox itself responded as valid over SMTP.
-   return deliverability !== "UNDELIVERABLE";
+  
+   return status !== "UNDELIVERABLE";
 }
 
 module.exports = { isEmailReal };
