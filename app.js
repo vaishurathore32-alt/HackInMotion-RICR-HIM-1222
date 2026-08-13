@@ -41,7 +41,6 @@ async function sendMessage() {
     return;
   }
 
-
   const subject =
     subjectInput.value.trim() || "General";
 
@@ -54,11 +53,7 @@ async function sendMessage() {
   const mode =
     modeInput.value;
 
-
-  /*
-    Remove welcome screen
-  */
-
+  /*  Remove welcome screen  */
   const welcome =
     document.querySelector(".welcome");
 
@@ -66,21 +61,15 @@ async function sendMessage() {
     welcome.remove();
   }
 
-
-  /*
-    Display user message
-  */
-
+  /*  Display user message  */
   addMessage(
     "user",
     question
   );
 
-
   questionInput.value = "";
 
   showTyping();
-
 
   try {
 
@@ -111,13 +100,10 @@ async function sendMessage() {
 
       });
 
-
     const data =
       await response.json();
 
-
     hideTyping();
-
 
     if (!data.success) {
 
@@ -129,12 +115,10 @@ async function sendMessage() {
       return;
     }
 
-
     addMessage(
       "assistant",
       data.answer
     );
-
 
   } catch (error) {
 
@@ -151,11 +135,7 @@ async function sendMessage() {
 
 }
 
-
-/*
-  Add message to UI
-*/
-
+/*  Add message to UI  */
 function addMessage(
   sender,
   message
@@ -178,7 +158,6 @@ function addMessage(
   content.textContent =
     message;
 
-
   messageDiv.appendChild(content);
 
   chatContainer.appendChild(messageDiv);
@@ -187,10 +166,7 @@ function addMessage(
   scrollToBottom();
 }
 
-
-/*
-  Typing indicator
-*/
+/* Typing indicator */
 
 function showTyping() {
 
@@ -213,7 +189,6 @@ function showTyping() {
   scrollToBottom();
 }
 
-
 function hideTyping() {
 
   const typing =
@@ -225,10 +200,7 @@ function hideTyping() {
 
 }
 
-
-/*
-  Scroll chat
-*/
+/*  Scroll chat  */
 
 function scrollToBottom() {
 
@@ -238,9 +210,7 @@ function scrollToBottom() {
 }
 
 
-/*
-  Quick suggestion
-*/
+/* Quick suggestion */
 
 function useSuggestion(text) {
 
@@ -250,13 +220,10 @@ function useSuggestion(text) {
 
 }
 
-
-/*
-  Quick action
+/*  Quick action
 
   Sends a follow-up request based
-  on the previous conversation.
-*/
+  on the previous conversation. */
 
 function quickAction(action) {
 
@@ -266,10 +233,7 @@ function quickAction(action) {
 
 }
 
-
-/*
-  Clear chat
-*/
+/*  Clear chat  */
 
 async function clearChat() {
 
@@ -279,7 +243,6 @@ async function clearChat() {
   if (!confirmed) {
     return;
   }
-
 
   try {
 
@@ -318,12 +281,8 @@ async function clearChat() {
 
 }
 
-
-/*
-  Enter = Send
-  Shift + Enter = New line
-*/
-
+/* Enter = Send
+  Shift + Enter = New line */
 questionInput.addEventListener(
   "keydown",
   function(event) {
