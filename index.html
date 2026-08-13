@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>AI Study Assistant</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+
+      <div>
+        <h1>🤖AI Study Assistant</h1>
+        <p>Your personal AI tutor</p>
+      </div>
+
+      <button id="clearChatBtn">
+        Clear Chat
+      </button>
+
+    </header>
+
+
+    <!-- Student Context -->
+    <section class="settings">
+
+      <div class="field">
+
+        <label>Subject</label>
+
+        <input
+          id="subject"
+          type="text"
+          placeholder="e.g. Java"
+          value="Java"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>Current Topic</label>
+
+        <input
+          id="topic"
+          type="text"
+          placeholder="e.g. Inheritance"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>Level</label>
+
+        <select id="level">
+
+          <option value="Beginner">
+            Beginner
+          </option>
+
+          <option value="Intermediate">
+            Intermediate
+          </option>
+
+          <option value="Advanced">
+            Advanced
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>Mode</label>
+
+        <select id="mode">
+
+          <option value="Learn">
+            Learn
+          </option>
+
+          <option value="Exam Preparation">
+            Exam Preparation
+          </option>
+
+        </select>
+
+      </div>
+
+    </section>
+
+
+    <!-- Chat -->
+    <main id="chatContainer" class="chat-container">
+
+      <div class="welcome">
+
+        <div class="bot-icon">
+          🤖
+        </div>
+
+        <h2>Hi! I'm your AI Study Assistant.</h2>
+
+        <p>
+          Ask me anything about your subject.
+        </p>
+
+        <div class="suggestions">
+
+          <button onclick="useSuggestion('Explain inheritance simply')">
+            Explain Simply
+          </button>
+
+          <button onclick="useSuggestion('Give me an example')">
+            Give Example
+          </button>
+
+          <button onclick="useSuggestion('Explain step by step')">
+            Step by Step
+          </button>
+
+          <button onclick="useSuggestion('Give me a short exam answer')">
+            Exam Answer
+          </button>
+
+        </div>
+
+      </div>
+
+    </main>
+
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+
+      <button onclick="quickAction('Explain this more simply')">
+        ✨ Explain Simpler
+      </button>
+
+      <button onclick="quickAction('Give me a real-life example')">
+        💡 Real-Life Example
+      </button>
+
+      <button onclick="quickAction('Explain this step by step')">
+        📚 Step-by-Step
+      </button>
+
+      <button onclick="quickAction('Give me a short exam-ready answer')">
+        📝 Exam Answer
+      </button>
+
+    </div>
+
+
+    <!-- Input -->
+    <footer class="input-area">
+
+      <textarea
+        id="questionInput"
+        placeholder="Ask your study doubt..."
+        rows="1"
+      ></textarea>
+
+      <button
+        id="sendBtn"
+        class="send-btn"
+      >
+        Send ➤
+      </button>
+
+    </footer>
+
+  </div>
+  <script src="app.js"></script>
+
+</body>
+
+</html>
