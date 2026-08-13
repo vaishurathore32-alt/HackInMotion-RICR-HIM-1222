@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const oracledb = require("oracledb");
+const { ObjectId } = require("mongodb");
 const { getConnection } = require("../config/db");
 const { isEmailReal } = require("../services/emailValidationService");
 const { sendOtpEmail } = require("../services/emailService");
@@ -8,14 +8,14 @@ const { generateOtp, hashOtp, isOtpValid } = require("../utils/otp");
 
 function generateToken(user) {
   return jwt.sign(
-    { id: user.ID, email: user.EMAIL },
+    { id: user._id.toString(), email: user.email },
     process.env.JWT_SECRET,
     { expiresIn: process.env.JWT_EXPIRES_IN || "7d" }
   );
 }
 
 function toPublicUser(row) {
-  return { id: row.ID, name: row.NAME, email: row.EMAIL };
+  return { id: row._id.toString(), name: row.name, email: row.email };
 }
 
 async function signup(req, res) {
@@ -25,16 +25,14 @@ async function signup(req, res) {
     return res.status(400).json({ error: "Name, email and password are required." });
   }
 
-  let connection;
   try {
-    connection = await getConnection();
+    const db = await getConnection();
+    const users = db.collection("users");
+    const pendingUsers = db.collection("pending_users");
 
-    const existing = await connection.execute(
-      `SELECT id FROM users WHERE email = :email`,
-      { email }
-    );
+    const existing = await users.findOne({ email });
 
-    if (existing.rows.length > 0) {
+    if (existing) {
       return res.status(409).json({ error: "An account with this email already exists." });
     }
 
@@ -64,20 +62,23 @@ async function signup(req, res) {
     const expiryMinutes = Number(process.env.OTP_EXPIRY_MINUTES) || 10;
 
     // Replace any earlier abandoned attempt for this email address.
-    await connection.execute(`DELETE FROM pending_users WHERE email = :email`, { email });
+    await pendingUsers.deleteMany({ email });
 
-    await connection.execute(
-      `INSERT INTO pending_users (name, email, password, otp_hash, otp_expires_at)
-       VALUES (:name, :email, :password, :otpHash, SYSTIMESTAMP + NUMTODSINTERVAL(:expiryMinutes, 'MINUTE'))`,
-      { name, email, password: hashedPassword, otpHash, expiryMinutes }
-    );
+    await pendingUsers.insertOne({
+      name,
+      email,
+      password: hashedPassword,
+      otp_hash: otpHash,
+      otp_expires_at: new Date(Date.now() + expiryMinutes * 60 * 1000),
+      created_at: new Date(),
+    });
 
     try {
       await sendOtpEmail(email, otp);
     } catch (mailErr) {
       console.error("OTP email send error:", mailErr);
       // Don't leave an unusable pending row behind if the email never went out.
-      await connection.execute(`DELETE FROM pending_users WHERE email = :email`, { email });
+      await pendingUsers.deleteMany({ email });
       return res.status(502).json({ error: "Couldn't send the verification email. Please try again." });
     }
 
@@ -88,8 +89,6 @@ async function signup(req, res) {
   } catch (err) {
     console.error("Signup error:", err);
     return res.status(500).json({ error: "Something went wrong. Please try again." });
-  } finally {
-    if (connection) await connection.close();
   }
 }
 
@@ -100,55 +99,43 @@ async function verifyOtp(req, res) {
     return res.status(400).json({ error: "Email and code are required." });
   }
 
-  let connection;
   try {
-    connection = await getConnection();
+    const db = await getConnection();
+    const users = db.collection("users");
+    const pendingUsers = db.collection("pending_users");
 
-    const result = await connection.execute(
-      `SELECT name, email, password, otp_hash, otp_expires_at
-       FROM pending_users WHERE email = :email`,
-      { email }
-    );
+    const pending = await pendingUsers.findOne({ email });
 
-    if (result.rows.length === 0) {
+    if (!pending) {
       return res.status(400).json({ error: "No pending signup found for this email. Please sign up again." });
     }
 
-    const pending = result.rows[0];
-
-    if (new Date(pending.OTP_EXPIRES_AT) < new Date()) {
-      await connection.execute(`DELETE FROM pending_users WHERE email = :email`, { email });
+    if (new Date(pending.otp_expires_at) < new Date()) {
+      await pendingUsers.deleteMany({ email });
       return res.status(400).json({ error: "That code has expired. Please sign up again." });
     }
 
-    if (!isOtpValid(otp, pending.OTP_HASH)) {
+    if (!isOtpValid(otp, pending.otp_hash)) {
       return res.status(400).json({ error: "Incorrect code. Please try again." });
     }
 
     // OTP confirmed - this is now a real account.
-    const insertResult = await connection.execute(
-      `INSERT INTO users (name, email, password)
-       VALUES (:name, :email, :password)
-       RETURNING id INTO :id`,
-      {
-        name: pending.NAME,
-        email: pending.EMAIL,
-        password: pending.PASSWORD,
-        id: { dir: oracledb.BIND_OUT, type: oracledb.NUMBER },
-      }
-    );
+    const insertResult = await users.insertOne({
+      name: pending.name,
+      email: pending.email,
+      password: pending.password,
+      created_at: new Date(),
+    });
 
-    await connection.execute(`DELETE FROM pending_users WHERE email = :email`, { email });
+    await pendingUsers.deleteMany({ email });
 
-    const user = { ID: insertResult.outBinds.id[0], NAME: pending.NAME, EMAIL: pending.EMAIL };
+    const user = { _id: insertResult.insertedId, name: pending.name, email: pending.email };
     const token = generateToken(user);
 
     return res.status(201).json({ token, user: toPublicUser(user) });
   } catch (err) {
     console.error("OTP verification error:", err);
     return res.status(500).json({ error: "Something went wrong. Please try again." });
-  } finally {
-    if (connection) await connection.close();
   }
 }
 
@@ -159,21 +146,17 @@ async function login(req, res) {
     return res.status(400).json({ error: "Email and password are required." });
   }
 
-  let connection;
   try {
-    connection = await getConnection();
+    const db = await getConnection();
+    const users = db.collection("users");
 
-    const result = await connection.execute(
-      `SELECT id, name, email, password FROM users WHERE email = :email`,
-      { email }
-    );
+    const user = await users.findOne({ email });
 
-    if (result.rows.length === 0) {
+    if (!user) {
       return res.status(401).json({ error: "Invalid email or password." });
     }
 
-    const user = result.rows[0];
-    const isMatch = await bcrypt.compare(password, user.PASSWORD);
+    const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
       return res.status(401).json({ error: "Invalid email or password." });
@@ -184,31 +167,24 @@ async function login(req, res) {
   } catch (err) {
     console.error("Login error:", err);
     return res.status(500).json({ error: "Something went wrong. Please try again." });
-  } finally {
-    if (connection) await connection.close();
   }
 }
 
 async function me(req, res) {
-  let connection;
   try {
-    connection = await getConnection();
+    const db = await getConnection();
+    const users = db.collection("users");
 
-    const result = await connection.execute(
-      `SELECT id, name, email FROM users WHERE id = :id`,
-      { id: req.userId }
-    );
+    const user = await users.findOne({ _id: new ObjectId(req.userId) });
 
-    if (result.rows.length === 0) {
+    if (!user) {
       return res.status(404).json({ error: "User not found." });
     }
 
-    return res.status(200).json({ user: toPublicUser(result.rows[0]) });
+    return res.status(200).json({ user: toPublicUser(user) });
   } catch (err) {
     console.error("Me error:", err);
     return res.status(500).json({ error: "Something went wrong." });
-  } finally {
-    if (connection) await connection.close();
   }
 }
 

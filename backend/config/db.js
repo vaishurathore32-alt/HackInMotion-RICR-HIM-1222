@@ -1,36 +1,31 @@
-const oracledb = require("oracledb");
+const { MongoClient } = require("mongodb");
 
-oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
-oracledb.autoCommit = true;
-
-let pool;
+let client;
+let db;
 
 async function initPool() {
-  if (pool) return pool;
+  if (db) return db;
 
-  pool = await oracledb.createPool({
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    connectString: process.env.DB_CONNECT_STRING,
-    poolMin: 2,
-    poolMax: 10,
-    poolIncrement: 1,
-  });
+  client = new MongoClient(process.env.MONGODB_URI);
+  await client.connect();
 
-  console.log("Oracle DB connection pool created");
-  return pool;
+  db = client.db(process.env.MONGODB_DB_NAME || "learnpath");
+
+  console.log("MongoDB Atlas connection established");
+  return db;
 }
 
 async function getConnection() {
-  if (!pool) await initPool();
-  return pool.getConnection();
+  if (!db) await initPool();
+  return db;
 }
 
 async function closePool() {
-  if (pool) {
-    await pool.close(10);
-    pool = null;
-    console.log("Oracle DB connection pool closed");
+  if (client) {
+    await client.close();
+    client = null;
+    db = null;
+    console.log("MongoDB Atlas connection closed");
   }
 }
 
