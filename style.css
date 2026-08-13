@@ -24,8 +24,8 @@ body {
 /* Header */
 
 .header {
-  padding: 20px;
-  background:linear-gradient( #332ae4,#6e68e7);
+  padding: 30px;
+  background:linear-gradient( #1e1989,#5c56c1);
   color: white;
 
   display: flex;
@@ -34,7 +34,7 @@ body {
 }
 
 .header h1 {
-  font-size: 24px;
+  font-size: 25px;
 }
 
 .header p {
@@ -43,7 +43,7 @@ body {
 }
 
 .header button {
-  padding: 10px 15px;
+  padding: 11px 16px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -80,9 +80,7 @@ body {
   border-radius: 7px;
 }
 
-
 /* Chat */
-
 .chat-container {
   flex: 1;
   overflow-y: auto;
@@ -104,15 +102,12 @@ body {
 }
 
 .welcome p {
-  color: #6b7280;
+  color: #545964;
 }
 
-
 /* Suggestions */
-
 .suggestions {
   margin-top: 25px;
-
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -125,13 +120,11 @@ body {
   border: 1px solid #ddd;
   border-radius: 20px;
 
-  background: white;
+  background:linear-gradient( white, #ddd);
   cursor: pointer;
 }
 
-
 /* Messages */
-
 .message {
   display: flex;
   margin-bottom: 18px;
@@ -150,7 +143,7 @@ body {
 }
 
 .user .message-content {
- background:linear-gradient( #332ae4,#6e68e7);
+ background:linear-gradient( #1e1989,#5c56c1);
   color: white;
   border-bottom-right-radius: 4px;
 }
@@ -160,9 +153,7 @@ body {
   border-bottom-left-radius: 4px;
 }
 
-
 /* Quick Actions */
-
 .quick-actions {
   padding: 10px 20px;
 
@@ -184,9 +175,7 @@ body {
   cursor: pointer;
 }
 
-
 /* Input */
-
 .input-area {
   padding: 15px;
 
@@ -215,24 +204,20 @@ textarea {
   border: none;
   border-radius: 10px;
 
-  background:linear-gradient( #332ae4,#6e68e7);
+  background:linear-gradient( #1e1989,#5c56c1);
   color: white;
 
   cursor: pointer;
   font-weight: bold;
 }
 
-
 /* Loading */
-
 .typing {
   color: #6b7280;
   font-style: italic;
 }
 
-
 /* Mobile */
-
 @media (max-width: 700px) {
 
   .settings {
@@ -256,7 +241,6 @@ textarea {
   }
 
 }
-
 
 @media (max-width: 450px) {
 
