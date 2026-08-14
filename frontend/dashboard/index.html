@@ -1,0 +1,2985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Learnpath - Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+<div class="sidebar-logo">
+<div class="logo-icon">
+<i class="fa-solid fa-graduation-cap"></i>
+</div>
+<span>Learnpath</span>
+</div>
+
+
+<nav class="sidebar-nav">
+
+<p class="nav-title">MAIN</p>
+
+<a href="#dashboard" class="nav-link active">
+<i class="fa-solid fa-house"></i>
+<span>Dashboard</span>
+</a>
+
+<a href="#courses" class="nav-link">
+<i class="fa-solid fa-book-open"></i>
+<span>My Courses</span>
+</a>
+
+<a href="#explore" class="nav-link">
+<i class="fa-solid fa-compass"></i>
+<span>Explore Courses</span>
+</a>
+
+
+<p class="nav-title">LEARN</p>
+
+<a href="#practice" class="nav-link">
+<i class="fa-solid fa-laptop-code"></i>
+<span>Practice & Challenges</span>
+</a>
+
+
+<p class="nav-title">YOUR TOOLS</p>
+
+<a href="#study-planner"
+class="nav-link tool-link planner-link">
+
+<div class="tool-icon">
+<i class="fa-solid fa-calendar-check"></i>
+</div>
+
+<div class="tool-text">
+<strong>AI Study Planner</strong>
+<small>Plan your learning</small>
+</div>
+
+</a>
+
+
+<a href="#ai-assistant"
+class="nav-link tool-link assistant-link">
+
+<div class="tool-icon">
+<i class="fa-solid fa-robot"></i>
+</div>
+
+<div class="tool-text">
+<strong>AI Study Assistant</strong>
+<small>Learn with AI</small>
+</div>
+
+</a>
+
+
+<p class="nav-title">TRACK</p>
+
+<a href="#progress" class="nav-link">
+<i class="fa-solid fa-chart-line"></i>
+<span>Progress</span>
+</a>
+
+<a href="#achievements" class="nav-link">
+<i class="fa-solid fa-medal"></i>
+<span>Achievements</span>
+</a>
+
+<a href="#certificates" class="nav-link">
+<i class="fa-solid fa-certificate"></i>
+<span>Certificates</span>
+</a>
+
+<a href="#bookmarks" class="nav-link">
+<i class="fa-solid fa-bookmark"></i>
+<span>Bookmarks</span>
+</a>
+
+
+<p class="nav-title">MORE</p>
+
+<a href="#resources" class="nav-link">
+<i class="fa-solid fa-folder-open"></i>
+<span>Resources</span>
+</a>
+
+<a href="#community" class="nav-link">
+<i class="fa-solid fa-users"></i>
+<span>Community</span>
+</a>
+
+<a href="#settings" class="nav-link">
+<i class="fa-solid fa-gear"></i>
+<span>Settings</span>
+</a>
+
+</nav>
+
+
+<div class="sidebar-bottom">
+
+<div class="sidebar-help">
+
+<i class="fa-solid fa-circle-info"></i>
+
+<div>
+<strong>Need Help?</strong>
+<span>Explore learning resources</span>
+</div>
+
+</div>
+
+
+<button class="logout-btn" id="logoutBtn">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+<span>Logout</span>
+
+</button>
+
+</div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+<!-- =====================================================
+     TOPBAR
+===================================================== -->
+
+<header class="topbar">
+
+<div class="topbar-left">
+
+<button
+class="sidebar-toggle"
+id="sidebarToggle"
+aria-label="Toggle sidebar">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+
+<div class="mobile-logo">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+<span>Learnpath</span>
+
+</div>
+
+
+<div class="search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+id="globalSearch"
+placeholder="Search courses, topics and resources..."
+autocomplete="off">
+
+</div>
+
+</div>
+
+
+<div class="topbar-actions">
+
+<div class="streak-indicator">
+
+<i class="fa-solid fa-fire"></i>
+
+<span>0 Day Streak</span>
+
+</div>
+
+
+<button
+class="icon-btn"
+id="themeToggle"
+title="Toggle theme">
+
+<i class="fa-solid fa-moon"></i>
+
+</button>
+
+
+<button
+class="icon-btn notification-btn"
+id="notificationBtn"
+title="Notifications">
+
+<i class="fa-solid fa-bell"></i>
+
+<span class="notification-dot"></span>
+
+</button>
+
+
+<div
+class="profile-menu"
+id="profileMenu">
+
+<div class="avatar">
+S
+</div>
+
+<div class="profile-info">
+
+<strong>Student</strong>
+
+<span>Learning Account</span>
+
+</div>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- =====================================================
+     DASHBOARD CONTENT
+===================================================== -->
+
+<div class="dashboard-content">
+
+
+<!-- =====================================================
+     WELCOME
+===================================================== -->
+
+<section
+class="welcome-section"
+id="dashboard">
+
+<div class="welcome-content">
+
+<span class="welcome-label">
+
+<i class="fa-solid fa-sparkles"></i>
+
+YOUR LEARNING SPACE
+
+</span>
+
+
+<h1>
+Welcome back, Student!
+</h1>
+
+
+<p>
+Start your learning journey today. Build your skills,
+follow your goals and learn at your own pace.
+</p>
+
+
+<div class="welcome-meta">
+
+<div>
+
+<i class="fa-solid fa-fire"></i>
+
+<strong>0 Days</strong>
+
+<span>Learning Streak</span>
+
+</div>
+
+
+<div>
+
+<i class="fa-solid fa-bullseye"></i>
+
+<strong>0 / 4</strong>
+
+<span>Today's Goal</span>
+
+</div>
+
+
+<div>
+
+<i class="fa-solid fa-chart-simple"></i>
+
+<strong>0%</strong>
+
+<span>Overall Progress</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="welcome-visual">
+
+<div class="progress-circle">
+
+<div class="progress-circle-inner">
+
+<strong>0%</strong>
+
+<span>Progress</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     STATISTICS
+===================================================== -->
+
+<section class="stats-grid">
+
+
+<div class="stat-card">
+
+<div class="stat-icon blue">
+<i class="fa-solid fa-book"></i>
+</div>
+
+<div>
+
+<span>Courses Enrolled</span>
+
+<strong>0</strong>
+
+<small>Start learning today</small>
+
+</div>
+
+</div>
+
+
+<div class="stat-card">
+
+<div class="stat-icon green">
+<i class="fa-solid fa-circle-check"></i>
+</div>
+
+<div>
+
+<span>Courses Completed</span>
+
+<strong>0</strong>
+
+<small>No courses completed yet</small>
+
+</div>
+
+</div>
+
+
+<div class="stat-card">
+
+<div class="stat-icon purple">
+<i class="fa-solid fa-clock"></i>
+</div>
+
+<div>
+
+<span>Learning Hours</span>
+
+<strong>0h</strong>
+
+<small>Your journey starts here</small>
+
+</div>
+
+</div>
+
+
+<div class="stat-card">
+
+<div class="stat-icon orange">
+<i class="fa-solid fa-fire"></i>
+</div>
+
+<div>
+
+<span>Current Streak</span>
+
+<strong>0</strong>
+
+<small>Start your streak</small>
+
+</div>
+
+</div>
+
+
+<div class="stat-card">
+
+<div class="stat-icon cyan">
+<i class="fa-solid fa-lightbulb"></i>
+</div>
+
+<div>
+
+<span>Skills Learned</span>
+
+<strong>0</strong>
+
+<small>Skills will appear here</small>
+
+</div>
+
+</div>
+
+
+<div class="stat-card">
+
+<div class="stat-icon pink">
+<i class="fa-solid fa-award"></i>
+</div>
+
+<div>
+
+<span>Certificates</span>
+
+<strong>0</strong>
+
+<small>Earn your first certificate</small>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     MY COURSES
+===================================================== -->
+
+<section
+class="content-section"
+id="courses">
+
+
+<div class="section-header">
+
+<div>
+
+<span class="section-label">
+YOUR LEARNING
+</span>
+
+<h2>
+My Courses
+</h2>
+
+<p>
+Continue the courses you are currently learning.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="course-grid">
+
+
+<article
+class="course-card searchable-card">
+
+<div class="course-icon html-icon">
+
+<i class="fa-brands fa-html5"></i>
+
+</div>
+
+
+<div class="course-info">
+
+<div class="course-top">
+
+<span class="difficulty beginner">
+Beginner
+</span>
+
+<span>
+Not started
+</span>
+
+</div>
+
+
+<h3>
+HTML & CSS
+</h3>
+
+
+<p>
+Learn the fundamentals of web development.
+</p>
+
+
+<div class="progress-info">
+
+<span>
+Progress
+</span>
+
+<strong>
+0%
+</strong>
+
+</div>
+
+
+<div class="progress-bar">
+
+<div style="width:0%"></div>
+
+</div>
+
+
+<button class="continue-btn">
+
+Start Learning
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</button>
+
+</div>
+
+</article>
+
+
+<article
+class="course-card searchable-card">
+
+<div class="course-icon js-icon">
+
+<i class="fa-brands fa-js"></i>
+
+</div>
+
+
+<div class="course-info">
+
+<div class="course-top">
+
+<span class="difficulty beginner">
+Beginner
+</span>
+
+<span>
+Not started
+</span>
+
+</div>
+
+
+<h3>
+JavaScript
+</h3>
+
+
+<p>
+Learn programming and interactive web development.
+</p>
+
+
+<div class="progress-info">
+
+<span>
+Progress
+</span>
+
+<strong>
+0%
+</strong>
+
+</div>
+
+
+<div class="progress-bar">
+
+<div style="width:0%"></div>
+
+</div>
+
+
+<button class="continue-btn">
+
+Start Learning
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</button>
+
+</div>
+
+</article>
+
+
+<article
+class="course-card searchable-card">
+
+<div class="course-icon python-icon">
+
+<i class="fa-brands fa-python"></i>
+
+</div>
+
+
+<div class="course-info">
+
+<div class="course-top">
+
+<span class="difficulty beginner">
+Beginner
+</span>
+
+<span>
+Not started
+</span>
+
+</div>
+
+
+<h3>
+Python Programming
+</h3>
+
+
+<p>
+Build programming fundamentals with Python.
+</p>
+
+
+<div class="progress-info">
+
+<span>
+Progress
+</span>
+
+<strong>
+0%
+</strong>
+
+</div>
+
+
+<div class="progress-bar">
+
+<div style="width:0%"></div>
+
+</div>
+
+
+<button class="continue-btn">
+
+Start Learning
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</button>
+
+</div>
+
+</article>
+
+</div>
+
+
+<!-- Empty learning state -->
+
+<div class="empty-learning-state">
+
+<i class="fa-solid fa-book-open"></i>
+
+<div>
+
+<h3>
+Your learning journey starts here
+</h3>
+
+<p>
+Explore available courses and enroll in the skills you want to learn.
+</p>
+
+</div>
+
+
+<a
+href="#explore"
+class="primary-btn">
+
+Explore Courses
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     EXPLORE COURSES
+===================================================== -->
+
+<section
+class="content-section"
+id="explore">
+
+
+<div class="section-header">
+
+<div>
+
+<span class="section-label">
+DISCOVER & LEARN
+</span>
+
+<h2>
+Explore Courses
+</h2>
+
+<p>
+Find courses across programming, web development
+and computer science.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     COURSE SEARCH
+===================================================== -->
+
+<div class="course-discovery-toolbar">
+
+<div class="course-search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+id="courseSearch"
+placeholder="Search any course..."
+autocomplete="off">
+
+</div>
+
+
+<div class="filter-group">
+
+<button
+class="filter-btn active"
+data-category="all">
+
+All
+
+</button>
+
+<button
+class="filter-btn"
+data-category="programming">
+
+Programming
+
+</button>
+
+<button
+class="filter-btn"
+data-category="web">
+
+Web Development
+
+</button>
+
+<button
+class="filter-btn"
+data-category="cs">
+
+Computer Science
+
+</button>
+
+<button
+class="filter-btn"
+data-category="advanced">
+
+Advanced Technology
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     COURSE RESULTS
+===================================================== -->
+
+<div
+class="explore-grid"
+id="exploreGrid">
+
+
+<!-- PROGRAMMING -->
+
+<article
+class="explore-card searchable-card"
+data-category="programming">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-c"></i>
+
+</div>
+
+<h3>
+C Programming
+</h3>
+
+<p>
+Learn programming fundamentals, logic and problem solving.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Beginner
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+80 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="programming">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-code"></i>
+
+</div>
+
+<h3>
+C++
+</h3>
+
+<p>
+Learn C++ programming, OOP and problem solving.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Beginner
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+90 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="programming">
+
+<div class="explore-icon">
+
+<i class="fa-brands fa-java"></i>
+
+</div>
+
+<h3>
+Java
+</h3>
+
+<p>
+Master Java programming and object-oriented concepts.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Intermediate
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+95 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="programming">
+
+<div class="explore-icon">
+
+<i class="fa-brands fa-python"></i>
+
+</div>
+
+<h3>
+Python
+</h3>
+
+<p>
+Learn Python from fundamentals to real-world projects.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Beginner
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+100 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="programming">
+
+<div class="explore-icon">
+
+<i class="fa-brands fa-php"></i>
+
+</div>
+
+<h3>
+PHP
+</h3>
+
+<p>
+Build dynamic websites using PHP programming.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Intermediate
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+70 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<!-- WEB DEVELOPMENT -->
+
+<article
+class="explore-card searchable-card"
+data-category="web">
+
+<div class="explore-icon">
+
+<i class="fa-brands fa-html5"></i>
+
+</div>
+
+<h3>
+HTML
+</h3>
+
+<p>
+Learn how to structure modern websites with HTML.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Beginner
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+60 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="web">
+
+<div class="explore-icon">
+
+<i class="fa-brands fa-css3-alt"></i>
+
+</div>
+
+<h3>
+CSS
+</h3>
+
+<p>
+Create attractive, responsive and modern interfaces.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Beginner
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+75 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="web">
+
+<div class="explore-icon">
+
+<i class="fa-brands fa-js"></i>
+
+</div>
+
+<h3>
+JavaScript
+</h3>
+
+<p>
+Add logic, interaction and dynamic functionality to websites.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Intermediate
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+110 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="web">
+
+<div class="explore-icon">
+
+<i class="fa-brands fa-react"></i>
+
+</div>
+
+<h3>
+React
+</h3>
+
+<p>
+Build modern component-based frontend applications.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Advanced
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+85 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="web">
+
+<div class="explore-icon">
+
+<i class="fa-brands fa-node-js"></i>
+
+</div>
+
+<h3>
+Node.js
+</h3>
+
+<p>
+Learn backend JavaScript and server-side development.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Intermediate
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+80 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="web">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-layer-group"></i>
+
+</div>
+
+<h3>
+Full Stack Development
+</h3>
+
+<p>
+Learn frontend, backend, databases and APIs together.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Advanced
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+150 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<!-- COMPUTER SCIENCE -->
+
+<article
+class="explore-card searchable-card"
+data-category="cs">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-database"></i>
+
+</div>
+
+<h3>
+DBMS
+</h3>
+
+<p>
+Learn databases, SQL, normalization and database design.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Intermediate
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+70 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="cs">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-microchip"></i>
+
+</div>
+
+<h3>
+Operating Systems
+</h3>
+
+<p>
+Understand processes, memory, scheduling and operating systems.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Intermediate
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+65 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="cs">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-network-wired"></i>
+
+</div>
+
+<h3>
+Computer Networks
+</h3>
+
+<p>
+Learn networking concepts, protocols and architectures.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Intermediate
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+72 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="cs">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-object-group"></i>
+
+</div>
+
+<h3>
+Object Oriented Programming
+</h3>
+
+<p>
+Master classes, objects, inheritance and polymorphism.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Intermediate
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+55 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="cs">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-gear"></i>
+
+</div>
+
+<h3>
+Software Engineering
+</h3>
+
+<p>
+Learn software development processes and methodologies.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Intermediate
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+50 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<!-- ADVANCED TECHNOLOGY -->
+
+<article
+class="explore-card searchable-card"
+data-category="advanced">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-brain"></i>
+
+</div>
+
+<h3>
+Artificial Intelligence
+</h3>
+
+<p>
+Understand AI concepts, applications and intelligent systems.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Advanced
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+100 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="advanced">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-robot"></i>
+
+</div>
+
+<h3>
+Machine Learning
+</h3>
+
+<p>
+Learn machine learning algorithms and practical concepts.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Advanced
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+95 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="advanced">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-chart-pie"></i>
+
+</div>
+
+<h3>
+Data Science
+</h3>
+
+<p>
+Learn data analysis, visualization and machine learning.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Advanced
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+90 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="advanced">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+</div>
+
+<h3>
+Cyber Security
+</h3>
+
+<p>
+Understand security concepts, threats and protection.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Advanced
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+85 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+
+<article
+class="explore-card searchable-card"
+data-category="advanced">
+
+<div class="explore-icon">
+
+<i class="fa-solid fa-cloud"></i>
+
+</div>
+
+<h3>
+Cloud Computing
+</h3>
+
+<p>
+Learn cloud platforms, architecture and deployment.
+</p>
+
+<div class="explore-meta">
+
+<span>
+<i class="fa-solid fa-layer-group"></i>
+Advanced
+</span>
+
+<span>
+<i class="fa-solid fa-book"></i>
+80 Lessons
+</span>
+
+</div>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</article>
+
+</div>
+
+
+<!-- =====================================================
+     NO RESULTS
+===================================================== -->
+
+<div
+class="course-no-results"
+id="courseNoResults"
+hidden>
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<h3>
+No courses found
+</h3>
+
+<p>
+Try another course name, category or keyword.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     PRACTICE & CHALLENGES
+===================================================== -->
+
+<section
+class="content-section"
+id="practice">
+
+
+<div class="section-header">
+
+<div>
+
+<span class="section-label">
+PRACTICE & IMPROVE
+</span>
+
+<h2>
+Practice & Challenges
+</h2>
+
+<p>
+Strengthen your skills through hands-on practice.
+</p>
+
+</div>
+
+
+<div class="difficulty-filter">
+
+<button
+class="difficulty-btn active">
+
+All
+
+</button>
+
+<button class="difficulty-btn">
+Beginner
+</button>
+
+<button class="difficulty-btn">
+Intermediate
+</button>
+
+<button class="difficulty-btn">
+Advanced
+</button>
+
+</div>
+
+</div>
+
+
+<div class="practice-grid">
+
+
+<div class="practice-card">
+
+<div class="practice-icon">
+<i class="fa-solid fa-code"></i>
+</div>
+
+<h3>
+Coding Practice
+</h3>
+
+<p>
+Solve programming problems and improve your logic.
+</p>
+
+<span class="practice-level">
+Beginner · Intermediate · Advanced
+</span>
+
+<button>
+Practice Now
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+
+</div>
+
+
+<div class="practice-card">
+
+<div class="practice-icon">
+<i class="fa-solid fa-list-check"></i>
+</div>
+
+<h3>
+MCQ Practice
+</h3>
+
+<p>
+Test your knowledge with topic-based questions.
+</p>
+
+<span class="practice-level">
+All Levels
+</span>
+
+<button>
+Start Practice
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+
+</div>
+
+
+<div class="practice-card">
+
+<div class="practice-icon">
+<i class="fa-solid fa-database"></i>
+</div>
+
+<h3>
+SQL Practice
+</h3>
+
+<p>
+Write queries and solve database problems.
+</p>
+
+<span class="practice-level">
+Intermediate
+</span>
+
+<button>
+Practice SQL
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+
+</div>
+
+
+<div class="practice-card">
+
+<div class="practice-icon">
+<i class="fa-solid fa-brain"></i>
+</div>
+
+<h3>
+DSA Challenges
+</h3>
+
+<p>
+Practice algorithms and data structures.
+</p>
+
+<span class="practice-level">
+Intermediate · Advanced
+</span>
+
+<button>
+Solve Problems
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+
+</div>
+
+
+<div class="practice-card">
+
+<div class="practice-icon">
+<i class="fa-solid fa-globe"></i>
+</div>
+
+<h3>
+Web Development Practice
+</h3>
+
+<p>
+Practice HTML, CSS and JavaScript challenges.
+</p>
+
+<span class="practice-level">
+Beginner · Intermediate
+</span>
+
+<button>
+Start Practice
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+
+</div>
+
+
+<div class="practice-card">
+
+<div class="practice-icon">
+<i class="fa-solid fa-user-tie"></i>
+</div>
+
+<h3>
+Interview Preparation
+</h3>
+
+<p>
+Practice technical and programming interview questions.
+</p>
+
+<span class="practice-level">
+Intermediate · Advanced
+</span>
+
+<button>
+Practice Questions
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     AI STUDY PLANNER
+===================================================== -->
+
+<section
+class="content-section integration-section planner-section"
+id="study-planner">
+
+
+<div class="integration-header">
+
+<div class="integration-icon planner-icon">
+
+<i class="fa-solid fa-calendar-check"></i>
+
+</div>
+
+
+<div>
+
+<span class="section-label">
+YOUR MAIN LEARNING TOOL
+</span>
+
+<h2>
+AI Study Planner
+</h2>
+
+<p>
+Create a personalized study schedule based on your goals,
+subjects, available time and learning priorities.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="integration-card">
+
+<div class="integration-placeholder">
+
+<i class="fa-solid fa-calendar-days"></i>
+
+<h3>
+Plan Your Learning
+</h3>
+
+<p>
+Your Study Planner will help you organize your study time,
+set goals and stay consistent.
+</p>
+
+<button
+class="primary-btn"
+id="openPlanner">
+
+<i class="fa-solid fa-arrow-right"></i>
+
+Open Study Planner
+
+</button>
+
+</div>
+
+
+<div id="study-planner-container"></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     AI STUDY ASSISTANT
+===================================================== -->
+
+<section
+class="content-section integration-section assistant-section"
+id="ai-assistant">
+
+
+<div class="integration-header">
+
+<div class="integration-icon assistant-icon">
+
+<i class="fa-solid fa-robot"></i>
+
+</div>
+
+
+<div>
+
+<span class="section-label">
+YOUR LEARNING COMPANION
+</span>
+
+<h2>
+AI Study Assistant
+</h2>
+
+<p>
+Ask questions, understand difficult concepts and get
+personalized learning support whenever you need it.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="integration-card">
+
+<div class="integration-placeholder">
+
+<i class="fa-solid fa-comments"></i>
+
+<h3>
+Learn With Your AI Assistant
+</h3>
+
+<p>
+Your AI Study Assistant will be available here to help
+you understand topics and solve your learning doubts.
+</p>
+
+<button
+class="primary-btn"
+id="openAssistant">
+
+<i class="fa-solid fa-arrow-right"></i>
+
+Open AI Assistant
+
+</button>
+
+</div>
+
+
+<div id="ai-assistant-container"></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<section
+class="content-section"
+id="progress">
+
+
+<div class="section-header">
+
+<div>
+
+<span class="section-label">
+TRACK YOUR GROWTH
+</span>
+
+<h2>
+My Progress
+</h2>
+
+<p>
+Your learning progress will build as you complete
+lessons and activities.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="progress-layout">
+
+
+<div class="progress-overview">
+
+<div class="big-progress-circle">
+
+<div>
+
+<strong>
+0%
+</strong>
+
+<span>
+Overall Progress
+</span>
+
+</div>
+
+</div>
+
+
+<div class="progress-details">
+
+<div>
+
+<span>
+Courses Completed
+</span>
+
+<strong>
+0 / 0
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+Topics Completed
+</span>
+
+<strong>
+0
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+Weekly Learning
+</span>
+
+<strong>
+0 hrs
+</strong>
+
+</div>
+
+
+<div>
+
+<span>
+Quiz Average
+</span>
+
+<strong>
+0%
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="skill-progress">
+
+<h3>
+Skills Progress
+</h3>
+
+
+<div class="skill-item">
+
+<div>
+
+<span>
+HTML & CSS
+</span>
+
+<strong>
+0%
+</strong>
+
+</div>
+
+<div class="skill-bar">
+<div style="width:0%"></div>
+</div>
+
+</div>
+
+
+<div class="skill-item">
+
+<div>
+
+<span>
+JavaScript
+</span>
+
+<strong>
+0%
+</strong>
+
+</div>
+
+<div class="skill-bar">
+<div style="width:0%"></div>
+</div>
+
+</div>
+
+
+<div class="skill-item">
+
+<div>
+
+<span>
+Programming
+</span>
+
+<strong>
+0%
+</strong>
+
+</div>
+
+<div class="skill-bar">
+<div style="width:0%"></div>
+</div>
+
+</div>
+
+
+<div class="skill-item">
+
+<div>
+
+<span>
+Database
+</span>
+
+<strong>
+0%
+</strong>
+
+</div>
+
+<div class="skill-bar">
+<div style="width:0%"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ACHIEVEMENTS
+===================================================== -->
+
+<section
+class="content-section"
+id="achievements">
+
+
+<div class="section-header">
+
+<div>
+
+<span class="section-label">
+MILESTONES
+</span>
+
+<h2>
+Achievements
+</h2>
+
+<p>
+Complete learning goals to unlock achievements.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="achievement-grid">
+
+
+<div class="achievement-card locked">
+
+<div class="achievement-icon">
+
+<i class="fa-solid fa-fire"></i>
+
+</div>
+
+<h3>
+Learning Streak
+</h3>
+
+<p>
+Maintain a consistent learning streak.
+</p>
+
+<span>
+Locked
+</span>
+
+</div>
+
+
+<div class="achievement-card locked">
+
+<div class="achievement-icon">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+</div>
+
+<h3>
+Course Completer
+</h3>
+
+<p>
+Complete your first course.
+</p>
+
+<span>
+Locked
+</span>
+
+</div>
+
+
+<div class="achievement-card locked">
+
+<div class="achievement-icon">
+
+<i class="fa-solid fa-trophy"></i>
+
+</div>
+
+<h3>
+Quiz Master
+</h3>
+
+<p>
+Score consistently high in quizzes.
+</p>
+
+<span>
+Locked
+</span>
+
+</div>
+
+
+<div class="achievement-card locked">
+
+<div class="achievement-icon">
+
+<i class="fa-solid fa-code"></i>
+
+</div>
+
+<h3>
+Coding Champion
+</h3>
+
+<p>
+Solve your first coding challenge.
+</p>
+
+<span>
+Locked
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CERTIFICATES
+===================================================== -->
+
+<section
+class="content-section"
+id="certificates">
+
+
+<div class="section-header">
+
+<div>
+
+<span class="section-label">
+YOUR CREDENTIALS
+</span>
+
+<h2>
+Certificates
+</h2>
+
+<p>
+Your earned certificates will appear here.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="certificate-empty">
+
+<i class="fa-solid fa-certificate"></i>
+
+<h3>
+No certificates yet
+</h3>
+
+<p>
+Complete courses and meet their requirements to earn certificates.
+</p>
+
+<a
+href="#explore"
+class="outline-btn">
+
+Explore Courses
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     BOOKMARKS
+===================================================== -->
+
+<section
+class="content-section"
+id="bookmarks">
+
+
+<div class="section-header">
+
+<div>
+
+<span class="section-label">
+SAVED FOR LATER
+</span>
+
+<h2>
+Bookmarks
+</h2>
+
+<p>
+Save tutorials and learning resources you want to revisit.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="empty-learning-state">
+
+<i class="fa-solid fa-bookmark"></i>
+
+<div>
+
+<h3>
+No bookmarks yet
+</h3>
+
+<p>
+Your saved tutorials and resources will appear here.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     RESOURCES
+===================================================== -->
+
+<section
+class="content-section"
+id="resources">
+
+
+<div class="section-header">
+
+<div>
+
+<span class="section-label">
+LEARNING SUPPORT
+</span>
+
+<h2>
+Resources
+</h2>
+
+<p>
+Useful resources to support your learning journey.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="resource-grid">
+
+
+<div class="resource-card">
+
+<div class="resource-icon">
+
+<i class="fa-solid fa-file-lines"></i>
+
+</div>
+
+<h3>
+Study Materials
+</h3>
+
+<p>
+Notes, guides and reference materials.
+</p>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</div>
+
+
+<div class="resource-card">
+
+<div class="resource-icon">
+
+<i class="fa-solid fa-video"></i>
+
+</div>
+
+<h3>
+Video Learning
+</h3>
+
+<p>
+Visual resources for difficult concepts.
+</p>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</div>
+
+
+<div class="resource-card">
+
+<div class="resource-icon">
+
+<i class="fa-solid fa-link"></i>
+
+</div>
+
+<h3>
+Useful Links
+</h3>
+
+<p>
+Helpful external learning resources.
+</p>
+
+<button class="outline-btn">
+Explore
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     COMMUNITY
+===================================================== -->
+
+<section
+class="content-section"
+id="community">
+
+
+<div class="section-header">
+
+<div>
+
+<span class="section-label">
+LEARN TOGETHER
+</span>
+
+<h2>
+Community
+</h2>
+
+<p>
+Connect, discuss and learn with other students.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="community-card">
+
+<div class="community-icon">
+
+<i class="fa-solid fa-users"></i>
+
+</div>
+
+
+<div>
+
+<h3>
+Student Community
+</h3>
+
+<p>
+Community discussions and student collaboration features
+will be available here.
+</p>
+
+</div>
+
+
+<button class="primary-btn">
+
+Explore Community
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SETTINGS
+===================================================== -->
+
+<section
+class="content-section"
+id="settings">
+
+
+<div class="section-header">
+
+<div>
+
+<span class="section-label">
+PREFERENCES
+</span>
+
+<h2>
+Settings
+</h2>
+
+<p>
+Manage your dashboard preferences.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+
+<div class="setting-item">
+
+<div class="setting-info">
+
+<i class="fa-solid fa-moon"></i>
+
+<div>
+
+<strong>
+Appearance
+</strong>
+
+<span>
+Switch between light and dark mode.
+</span>
+
+</div>
+
+</div>
+
+
+<button
+class="outline-btn"
+id="settingsTheme">
+
+Change Theme
+
+</button>
+
+</div>
+
+
+<div class="setting-item">
+
+<div class="setting-info">
+
+<i class="fa-solid fa-bell"></i>
+
+<div>
+
+<strong>
+Notifications
+</strong>
+
+<span>
+Manage your learning notifications.
+</span>
+
+</div>
+
+</div>
+
+
+<button class="outline-btn">
+
+Manage
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section
+class="content-section"
+id="faq">
+
+
+<div class="section-header">
+
+<div>
+
+<span class="section-label">
+HELP CENTER
+</span>
+
+<h2>
+Frequently Asked Questions
+</h2>
+
+<p>
+Quick answers about your learning dashboard.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq-container">
+
+
+<div class="faq-item">
+
+<button class="faq-question">
+
+<span>
+How will my progress be tracked?
+</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</button>
+
+
+<div class="faq-answer">
+
+<p>
+Your progress will be calculated from completed lessons,
+courses, quizzes, practice activities and learning goals.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<button class="faq-question">
+
+<span>
+Can I change my learning goals?
+</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</button>
+
+
+<div class="faq-answer">
+
+<p>
+Yes. Your learning goals and study schedule can be updated
+according to your requirements.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<button class="faq-question">
+
+<span>
+Where will my certificates appear?
+</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</button>
+
+
+<div class="faq-answer">
+
+<p>
+Your earned certificates will automatically appear in the
+Certificates section.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<button class="faq-question">
+
+<span>
+Where will the AI tools be integrated?
+</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</button>
+
+
+<div class="faq-answer">
+
+<p>
+The AI Study Planner and AI Study Assistant have dedicated
+integration containers so the existing implementations can
+be connected later without redesigning the dashboard.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="dashboard-footer">
+
+<div>
+
+<strong>
+Learnpath
+</strong>
+
+<p>
+Learn smarter. Study your way.
+</p>
+
+</div>
+
+
+<span>
+© 2026 Learnpath. All rights reserved.
+</span>
+
+</footer>
+
+
+</div>
+
+</main>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+class="toast"
+id="toast">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<span id="toastMessage">
+Action completed successfully.
+</span>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
