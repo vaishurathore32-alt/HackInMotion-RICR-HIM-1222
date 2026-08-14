@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Study Planner</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>🎓 AI Study Planner</h1>
+
+    <p>
+        Your personal adaptive AI study assistant
+    </p>
+
+</header>
+
+
+<main>
+
+
+<!-- GOAL SETUP -->
+
+<section class="card">
+
+    <h2>🎯 Goal Setup</h2>
+
+    <form id="goalForm">
+
+
+        <div class="grid">
+
+
+            <div>
+
+                <label>
+                    Subject
+                </label>
+
+                <input
+                    id="subject"
+                    type="text"
+                    placeholder="e.g. DBMS"
+                    required
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Exam / Learning Goal
+                </label>
+
+                <input
+                    id="goal"
+                    type="text"
+                    placeholder="e.g. University Exam"
+                    required
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Deadline
+                </label>
+
+                <input
+                    id="deadline"
+                    type="date"
+                    required
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Hours Per Day
+                </label>
+
+                <input
+                    id="hoursPerDay"
+                    type="number"
+                    min="0.5"
+                    step="0.5"
+                    value="2"
+                    required
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Days Per Week
+                </label>
+
+                <input
+                    id="daysPerWeek"
+                    type="number"
+                    min="1"
+                    max="7"
+                    value="6"
+                    required
+                >
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Knowledge Level
+                </label>
+
+                <select id="knowledgeLevel">
+
+                    <option>
+                        Beginner
+                    </option>
+
+                    <option>
+                        Basic
+                    </option>
+
+                    <option>
+                        Intermediate
+                    </option>
+
+                    <option>
+                        Advanced
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+        <label>
+            Weak Topics
+        </label>
+
+        <textarea
+            id="weakTopics"
+            placeholder="e.g. SQL Joins, Normalization"
+        ></textarea>
+
+
+        <button type="submit">
+
+            🧠 Generate AI Study Plan
+
+        </button>
+
+
+    </form>
+
+
+    <p
+        id="loading"
+        class="loading"
+    >
+
+        🤖 AI is creating your personalized plan...
+
+    </p>
+
+
+</section>
+
+
+<!-- PROGRESS -->
+
+<section class="card">
+
+    <h2>📊 Progress</h2>
+
+
+    <div class="stats">
+
+
+        <div>
+
+            <strong id="totalSessions">
+                0
+            </strong>
+
+            <span>
+                Total Sessions
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <strong id="completedSessions">
+                0
+            </strong>
+
+            <span>
+                Completed
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <strong id="progressPercent">
+                0%
+            </strong>
+
+            <span>
+                Progress
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <strong id="weakCount">
+                0
+            </strong>
+
+            <span>
+                Weak Topics
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="progress">
+
+        <div
+            id="progressBar"
+        ></div>
+
+    </div>
+
+
+</section>
+
+
+<!-- TODAY -->
+
+<section class="card">
+
+    <h2>
+        📅 Today's Plan
+    </h2>
+
+    <div id="todayPlan">
+
+        <p>
+            Generate your plan first.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FULL PLAN -->
+
+<section class="card">
+
+    <h2>
+        📚 Complete Study Plan
+    </h2>
+
+    <div id="fullPlan">
+
+        <p>
+            Your AI plan will appear here.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section class="card">
+
+    <h2>
+        📝 Quiz Result
+    </h2>
+
+
+    <form id="quizForm">
+
+
+        <input
+            id="quizTopic"
+            placeholder="Topic"
+            required
+        >
+
+
+        <input
+            id="quizScore"
+            type="number"
+            min="0"
+            max="100"
+            placeholder="Score %"
+            required
+        >
+
+
+        <button type="submit">
+
+            Save Quiz Result
+
+        </button>
+
+
+    </form>
+
+
+    <p id="quizMessage"></p>
+
+
+</section>
+
+
+<!-- ADAPTIVE -->
+
+<section class="card">
+
+    <h2>
+        🔄 Adaptive Learning
+    </h2>
+
+
+    <div id="adaptiveArea">
+
+        <p>
+            Take a quiz to detect weak topics.
+        </p>
+
+    </div>
+
+
+    <button
+        id="adaptButton"
+    >
+
+        🤖 Adapt My Study Plan
+
+    </button>
+
+
+</section>
+
+
+</main>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
