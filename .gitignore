@@ -1,3 +1,6 @@
 node_modules/
 .env
+.DS_store
+data/planner.jsonnode_modules/
+.env
 *.env
