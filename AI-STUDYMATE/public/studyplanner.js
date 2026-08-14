@@ -904,11 +904,8 @@ function escapeHTML(
     return div.innerHTML;
 
 }
-
-
 // ==========================================
 // INITIAL STATE
 // ==========================================
-
 results.style.display =
     "block";
