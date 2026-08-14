@@ -4,19 +4,17 @@ const { getConnection } = require("../config/db");
 // whose OTP has already expired without being verified (e.g. the user
 // never came back to enter it, or entered it wrong and gave up).
 async function cleanupExpiredPendingUsers() {
-  let connection;
   try {
-    connection = await getConnection();
-    const result = await connection.execute(
-      `DELETE FROM pending_users WHERE otp_expires_at < SYSTIMESTAMP`
-    );
-    if (result.rowsAffected > 0) {
-      console.log(`Cleanup: removed ${result.rowsAffected} expired pending signup(s).`);
+    const db = await getConnection();
+    const result = await db
+      .collection("pending_users")
+      .deleteMany({ otp_expires_at: { $lt: new Date() } });
+
+    if (result.deletedCount > 0) {
+      console.log(`Cleanup: removed ${result.deletedCount} expired pending signup(s).`);
     }
   } catch (err) {
     console.error("Cleanup job error:", err);
-  } finally {
-    if (connection) await connection.close();
   }
 }
 
