@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>StudyMate | AI Study Planner</title>
+
+    <link
+        rel="stylesheet"
+        href="studyplanner.css"
+    >
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🤖
+            </div>
+
+            <div>
+                <h1>StudyMate</h1>
+
+                <p>
+                    AI-Powered Study Planner
+                </p>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+            <span class="status">
+                <span class="status-dot"></span>
+                AI Online
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+                    YOUR PERSONAL AI STUDY PARTNER
+                </p>
+
+                <h2>
+                    Study smarter.
+                    <span>Achieve more.</span>
+                </h2>
+
+                <p class="hero-description">
+
+                    StudyMate creates a personalized study
+                    plan based on your goals, available time,
+                    knowledge level and weak topics.
+
+                </p>
+
+            </div>
+
+            <div class="hero-robot">
+                🤖
+            </div>
+
+        </section>
+
+
+        <!-- ================= GOAL SETUP ================= -->
+
+        <section class="card">
+
+            <div class="section-title">
+
+                <div>
+
+                    <span class="section-icon">
+                        🎯
+                    </span>
+
+                    <div>
+                        <h3>
+                            Create Your Study Goal
+                        </h3>
+
+                        <p>
+                            Tell StudyMate what you want to achieve.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <form id="goalForm">
+
+
+                <div class="form-grid">
+
+
+                    <!-- SUBJECT -->
+
+                    <div class="form-group">
+
+                        <label for="subject">
+                            Subject
+                        </label>
+
+                        <input
+                            type="text"
+                            id="subject"
+                            placeholder="e.g. DBMS"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- GOAL -->
+
+                    <div class="form-group">
+
+                        <label for="examGoal">
+                            Exam / Learning Goal
+                        </label>
+
+                        <input
+                            type="text"
+                            id="examGoal"
+                            placeholder="e.g. Prepare for university exam"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DEADLINE -->
+
+                    <div class="form-group">
+
+                        <label for="deadline">
+                            Deadline
+                        </label>
+
+                        <input
+                            type="date"
+                            id="deadline"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- HOURS -->
+
+                    <div class="form-group">
+
+                        <label for="hours">
+                            Hours Available Per Day
+                        </label>
+
+                        <input
+                            type="number"
+                            id="hours"
+                            min="0.5"
+                            max="24"
+                            step="0.5"
+                            placeholder="2"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DAYS -->
+
+                    <div class="form-group">
+
+                        <label for="days">
+                            Days Available Per Week
+                        </label>
+
+                        <select id="days">
+
+                            <option value="1">
+                                1 Day
+                            </option>
+
+                            <option value="2">
+                                2 Days
+                            </option>
+
+                            <option value="3">
+                                3 Days
+                            </option>
+
+                            <option value="4">
+                                4 Days
+                            </option>
+
+                            <option value="5">
+                                5 Days
+                            </option>
+
+                            <option value="6" selected>
+                                6 Days
+                            </option>
+
+                            <option value="7">
+                                7 Days
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- KNOWLEDGE -->
+
+                    <div class="form-group">
+
+                        <label for="knowledge">
+                            Current Knowledge Level
+                        </label>
+
+                        <select id="knowledge">
+
+                            <option value="beginner">
+                                Beginner
+                            </option>
+
+                            <option value="basic">
+                                Basic
+                            </option>
+
+                            <option value="intermediate">
+                                Intermediate
+                            </option>
+
+                            <option value="advanced">
+                                Advanced
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WEAK TOPICS -->
+
+                <div class="form-group weak-input">
+
+                    <label for="weakTopics">
+                        Weak Topics
+                    </label>
+
+                    <input
+                        type="text"
+                        id="weakTopics"
+                        placeholder="e.g. SQL Joins, Normalization, Transactions"
+                    >
+
+                    <small>
+                        Separate multiple topics with commas.
+                    </small>
+
+                </div>
+
+
+                <!-- GENERATE -->
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                    id="generateButton"
+                >
+
+                    ✨ Generate My AI Study Plan
+
+                </button>
+
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= LOADING ================= -->
+
+        <div
+            class="loading"
+            id="loading"
+            hidden
+        >
+
+            <div class="loader"></div>
+
+            <p>
+                StudyMate is creating your personalized plan...
+            </p>
+
+        </div>
+
+
+        <!-- ================= RESULTS ================= -->
+
+        <section
+            class="results"
+            id="results"
+        >
+
+
+            <!-- ================= SUMMARY ================= -->
+
+            <div class="card summary-card">
+
+                <div class="section-title">
+
+                    <div>
+
+                        <span class="section-icon">
+                            🧠
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                StudyMate's Strategy
+                            </h3>
+
+                            <p>
+                                Your personalized AI recommendation
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <p
+                    id="aiSummary"
+                    class="summary-text"
+                >
+                    Generate your study plan to see
+                    StudyMate's recommendations.
+                </p>
+
+            </div>
+
+
+            <!-- ================= STATS ================= -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Total Sessions
+                        </p>
+
+                        <strong id="totalSessions">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⏱️
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Study Time
+                        </p>
+
+                        <strong id="totalMinutes">
+                            0 min
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📈
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Progress
+                        </p>
+
+                        <strong id="progressPercentage">
+                            0%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= TWO COLUMNS ================= -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- TODAY -->
+
+                <div class="card">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                TODAY
+                            </span>
+
+                            <h3>
+                                📅 Today's Plan
+                            </h3>
+
+                        </div>
+
+                        <span
+                            class="time-badge"
+                            id="todayTime"
+                        >
+                            0 min
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="todaySessions"
+                        class="sessions"
+                    >
+
+                        <div class="empty-state">
+
+                            <span>
+                                📚
+                            </span>
+
+                            <p>
+                                Your sessions will appear here.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROGRESS -->
+
+                <div class="card">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                PROGRESS
+                            </span>
+
+                            <h3>
+                                📊 Your Progress
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress-wrapper">
+
+                        <div class="progress-number">
+
+                            <strong
+                                id="progressBig"
+                            >
+                                0%
+                            </strong>
+
+                            <span>
+                                completed
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                id="progressFill"
+                            ></div>
+
+                        </div>
+
+
+                        <p id="progressText">
+                            0 of 0 sessions completed
+                        </p>
+
+                    </div>
+
+
+                    <div class="progress-stats">
+
+                        <div>
+
+                            <strong id="completedSessions">
+                                0
+                            </strong>
+
+                            <span>
+                                Completed
+                            </span>
+
+                        </div>
+
+                        <div>
+
+                            <strong id="remainingSessions">
+                                0
+                            </strong>
+
+                            <span>
+                                Remaining
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= ADAPTIVE AI ================= -->
+
+            <div class="card adaptive-card">
+
+                <div class="adaptive-icon">
+                    🔄
+                </div>
+
+                <div class="adaptive-content">
+
+                    <span class="eyebrow">
+                        ADAPTIVE AI
+                    </span>
+
+                    <h3>
+                        StudyMate learns from your performance
+                    </h3>
+
+                    <p>
+
+                        Complete a quiz and StudyMate can identify
+                        your weak topics, add extra revision and
+                        generate an improved study plan.
+
+                    </p>
+
+
+                    <div class="quiz-inputs">
+
+                        <input
+                            type="text"
+                            id="quizTopic"
+                            placeholder="Topic e.g. Normalization"
+                        >
+
+                        <input
+                            type="number"
+                            id="quizScore"
+                            min="0"
+                            max="100"
+                            placeholder="Score %"
+                        >
+
+                        <button
+                            class="secondary-button"
+                            id="adaptiveButton"
+                        >
+                            🧠 Analyze Performance
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="adaptiveResult"
+                        class="adaptive-result"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= WEAK TOPICS ================= -->
+
+            <div class="card">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            AI ANALYSIS
+                        </span>
+
+                        <h3>
+                            🔍 Weak Topics
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="weakTopicsDisplay"
+                    class="topics"
+                >
+
+                    <span class="topic-empty">
+                        No weak topics detected yet.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <strong>
+            🤖 StudyMate
+        </strong>
+
+        <span>
+            AI-Powered Personalized Learning
+        </span>
+
+    </footer>
+
+
+    <script src="studyplanner.js"></script>
+
+</body>
+
+</html>
