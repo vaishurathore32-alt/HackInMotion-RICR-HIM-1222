@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learnpath AI - Personalized Learning</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+<div class="auth-page">
+
+<div class="auth-container">
+
+<section class="auth-info">
+<div class="auth-logo">Learnpath AI</div>
+
+<h1>Learn smarter.<br>Study your way.</h1>
+
+<p>
+Your personal AI-powered learning companion that helps you
+understand your strengths, build a study plan and learn at your own pace.
+</p>
+
+<div class="auth-features">
+
+<div class="auth-feature">
+<span>🎯</span>
+<div>Personalized learning plans</div>
+</div>
+
+<div class="auth-feature">
+<span>🧠</span>
+<div>Smart knowledge assessment</div>
+</div>
+
+<div class="auth-feature">
+<span>🤖</span>
+<div>AI-powered doubt solving</div>
+</div>
+
+<div class="auth-feature">
+<span>📊</span>
+<div>Track your learning progress</div>
+</div>
+
+</div>
+</section>
+
+<section class="auth-form">
+
+<h2 id="authTitle">Welcome back 👋</h2>
+
+<p class="auth-subtitle" id="authSubtitle">
+Login to continue your personalized learning journey.
+</p>
+
+<div id="loginSignupStep">
+
+<form id="authForm">
+
+<div class="form-group" id="nameGroup" style="display:none;">
+<label for="name">Student Name</label>
+<input
+type="text"
+id="name"
+placeholder="Enter your name">
+</div>
+
+<div class="form-group">
+<label for="email">Email Address</label>
+<input
+type="email"
+id="email"
+placeholder="Enter your email"
+required>
+</div>
+
+<div class="form-group">
+<label for="password">Password</label>
+<input
+type="password"
+id="password"
+placeholder="Enter your password"
+required>
+</div>
+
+<button type="submit" class="auth-button" id="authButton">
+Login
+</button>
+
+</form>
+
+<div class="auth-switch">
+<span id="switchText">Don't have an account?</span>
+
+<button type="button" id="switchAuth">
+Create account
+</button>
+</div>
+
+<div class="auth-switch" id="forgotPasswordLinkWrap">
+<button type="button" id="forgotPasswordLink">
+Forgot password?
+</button>
+</div>
+
+</div>
+
+<div id="otpStep" style="display:none;">
+
+<h2>Verify your email</h2>
+
+<p class="auth-subtitle" id="otpMessage">
+We sent a 6-digit code to your email.
+</p>
+
+<form id="otpForm">
+
+<div class="form-group">
+<label for="otp">Verification Code</label>
+<input
+type="text"
+id="otp"
+inputmode="numeric"
+maxlength="6"
+placeholder="Enter 6-digit code"
+required>
+</div>
+
+<button type="submit" class="auth-button" id="otpButton">
+Verify Code
+</button>
+
+</form>
+
+<p class="auth-subtitle" id="otpTimer"></p>
+
+<div class="auth-switch">
+<button type="button" id="otpBack">
+Back to sign up
+</button>
+</div>
+
+</div>
+
+<div id="forgotPasswordStep" style="display:none;">
+
+<h2>Reset your password</h2>
+
+<p class="auth-subtitle" id="forgotPasswordMessage">
+Enter your account email and we'll send you a 6-digit code.
+</p>
+
+<form id="forgotPasswordRequestForm">
+
+<div class="form-group">
+<label for="forgotEmail">Email Address</label>
+<input
+type="email"
+id="forgotEmail"
+placeholder="Enter your email"
+required>
+</div>
+
+<button type="submit" class="auth-button" id="forgotPasswordRequestButton">
+Send Reset Code
+</button>
+
+</form>
+
+<form id="forgotPasswordResetForm" style="display:none;">
+
+<div class="form-group">
+<label for="resetOtp">Verification Code</label>
+<input
+type="text"
+id="resetOtp"
+inputmode="numeric"
+maxlength="6"
+placeholder="Enter 6-digit code"
+required>
+</div>
+
+<div class="form-group">
+<label for="newPassword">New Password</label>
+<input
+type="password"
+id="newPassword"
+placeholder="Enter your new password"
+required>
+</div>
+
+<button type="submit" class="auth-button" id="resetPasswordButton">
+Reset Password
+</button>
+
+</form>
+
+<div class="auth-switch">
+<button type="button" id="forgotPasswordBack">
+Back to login
+</button>
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
